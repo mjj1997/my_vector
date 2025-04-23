@@ -1,0 +1,114 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "common",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "CMAKE_CXX_STANDARD": "20",
+                "CMAKE_CXX_STANDARD_REQUIRED": "ON",
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+            }
+        },
+        {
+            "name": "debug",
+            "displayName": "Debug",
+            "hidden": true,
+            "inherits": [
+                "common"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_DEBUG_POSTFIX": "_d"
+            }
+        },
+        {
+            "name": "release",
+            "displayName": "Release",
+            "hidden": true,
+            "inherits": [
+                "common"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "windows",
+            "displayName": "Windows",
+            "hidden": true,
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            },
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "clang-cl",
+                "CMAKE_CXX_FLAGS": "/permissive- /W4 /w44365 /external:W3 /WX",
+                "VCPKG_OVERLAY_TRIPLETS": "$env{VCPKG_OVERLAY_TRIPLETS}",
+                "VCPKG_TARGET_TRIPLET": "$env{VCPKG_TARGET_TRIPLET}"
+            }
+        },
+        {
+            "name": "windows-debug",
+            "displayName": "Windows Debug",
+            "inherits": [
+                "debug",
+                "windows"
+            ],
+            "cacheVariables": {
+                "CMAKE_CXX_FLAGS": ""
+            }
+        },
+        {
+            "name": "windows-release",
+            "displayName": "Windows Release",
+            "inherits": [
+                "release",
+                "windows"
+            ],
+            "cacheVariables": {
+                "CMAKE_CXX_FLAGS": ""
+            }
+        },
+        {
+            "name": "linux",
+            "displayName": "Linux",
+            "hidden": true,
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            },
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_CXX_FLAGS": "-pedantic-errors -Wall -Weffc++ -Wextra -Wconversion -Wsign-conversion -Werror"
+            }
+        },
+        {
+            "name": "linux-debug",
+            "displayName": "Linux Debug",
+            "inherits": [
+                "debug",
+                "linux"
+            ],
+            "cacheVariables": {
+                "CMAKE_CXX_FLAGS": ""
+            }
+        },
+        {
+            "name": "linux-release",
+            "displayName": "Linux Release",
+            "inherits": [
+                "release",
+                "linux"
+            ],
+            "cacheVariables": {
+                "CMAKE_CXX_FLAGS": ""
+            }
+        }
+    ]
+}
