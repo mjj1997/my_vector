@@ -15,6 +15,7 @@ public:
     MyVector& operator=(const MyVector& rhs);
 
     size_t size() const;
+    size_t capacity() const;
     bool empty() const;
 
     //只读元素

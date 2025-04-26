@@ -78,6 +78,11 @@ int& MyVector::operator[](size_t n)
     return m_data[n];
 }
 
+size_t MyVector::capacity() const
+{
+    return m_capacity;
+}
+
 bool MyVector::empty() const
 {
     return m_size == 0;
