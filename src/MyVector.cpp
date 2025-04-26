@@ -13,9 +13,13 @@ MyVector::MyVector(int n, int value)
         throw std::invalid_argument{ "n cannot be negative" };
     }
 
+    reserve(n);
+
     for (int i{ 0 }; i < n; ++i) {
-        push_back(value);
+        m_data[i] = value;
     }
+
+    m_size = n;
 }
 
 MyVector::MyVector(const MyVector& other)
