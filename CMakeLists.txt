@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(MyVector VERSION 1.1 LANGUAGES CXX)
+project(MyVector VERSION 1.0 LANGUAGES CXX)
 
 option(BUILD_MYVECTOR_SHARED_LIBS "build MyVector shared library" ON)
 option(BUILD_MYVECTOR_STATIC_LIBS "build MyVector static library" ON)
