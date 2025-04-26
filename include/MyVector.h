@@ -23,12 +23,11 @@ public:
     //写入元素
     int& operator[](size_t n);
 
+    void reserve(size_t newCapacity);
     void push_back(int value);
     void clear();
 
 private:
-    void reserve(size_t newCapacity);
-
     int* m_data{ nullptr };
     size_t m_size{ 0 };
     size_t m_capacity{ 0 };
