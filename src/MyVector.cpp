@@ -56,25 +56,13 @@ size_t MyVector::size() const
 
 void MyVector::push_back(int value)
 {
-    //1 如果capacity为0，则一次性开辟10个元素
-    //2 如果capacity容量没有用完 追加到最后
-    //3 如果capacity容量已经用完，开辟两倍capacity大小的容量，拷贝老数据，追加新数据
-    if (m_capacity == 0) {
-        reserve(10);
-        m_data[0] = value;
-        ++m_size;
-    } else if (m_size < m_capacity) {
-        //给最后一个元素的后面赋值为新元素value
-        //增加元素数量
-        m_data[m_size] = value;
-        ++m_size;
-    } else {
-        //每次内存不够用就翻倍
-        reserve(2 * m_capacity);
-
-        m_data[m_size] = value;
-        ++m_size;
+    if (m_size == m_capacity) {
+        size_t newCapacity{ m_capacity == 0 ? 10 : m_capacity * 2 };
+        reserve(newCapacity);
     }
+
+    m_data[m_size] = value;
+    ++m_size;
 }
 
 const int& MyVector::operator[](size_t n) const
