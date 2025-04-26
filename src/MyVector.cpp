@@ -23,11 +23,10 @@ MyVector::MyVector(int n, int value)
 }
 
 MyVector::MyVector(const MyVector& other)
+    : m_data{ new int[other.m_capacity] }
+    , m_size{ other.m_size }
+    , m_capacity{ other.m_capacity }
 {
-    m_data = new int[other.m_capacity];
-    m_size = other.m_size;
-    m_capacity = other.m_capacity;
-
     std::copy(other.m_data, other.m_data + other.m_size, m_data);
 }
 
