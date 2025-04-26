@@ -1,6 +1,7 @@
 #include "include/MyVector.h"
 
 #include <algorithm>
+#include <stdexcept>
 
 namespace myvector {
 
@@ -8,6 +9,10 @@ MyVector::MyVector() {}
 
 MyVector::MyVector(int n, int value)
 {
+    if (n < 0) {
+        throw std::invalid_argument{ "n cannot be negative" };
+    }
+
     for (int i{ 0 }; i < n; ++i) {
         push_back(value);
     }

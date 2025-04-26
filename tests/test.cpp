@@ -1,5 +1,6 @@
 #include "include/MyVector.h"
 
+#include <exception>
 #include <gtest/gtest.h>
 
 void print(myvector::MyVector& v, const char* msg)
@@ -111,6 +112,15 @@ TEST(MyVectorTest, Test4)
         c = a;
         c[0] = 1;
         EXPECT_EQ(c[0], 1);
+    }
+}
+
+TEST(MyVectorTest, NegativeN)
+{
+    try {
+        myvector::MyVector v(-1, 0);
+    } catch (const std::exception& e) {
+        std::cout << e.what() << std::endl;
     }
 }
 
