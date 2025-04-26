@@ -94,14 +94,10 @@ bool MyVector::empty() const
 
 void MyVector::clear()
 {
-    if (m_capacity == 0) {
-        return;
-    } else {
-        delete[] m_data;
-        m_data = nullptr;
-        m_size = 0;
-        m_capacity = 0;
-    }
+    delete[] m_data;
+    m_data = nullptr;
+    m_size = 0;
+    m_capacity = 0;
 }
 
 void MyVector::reserve(size_t newCapacity)
