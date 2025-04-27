@@ -4,21 +4,21 @@
 
 TEST(MyVectorIteratrTest, BeginIterator)
 {
-    myvector::MyVector v(5, 123);
+    myvector::MyVector<int> v(5, 123);
     auto itr{ v.begin() };
     EXPECT_EQ(*itr, v[0]);
 }
 
 TEST(MyVectorIteratrTest, EndIterator)
 {
-    myvector::MyVector v(5, 123);
+    myvector::MyVector<int> v(5, 123);
     auto endItr{ v.end() };
     EXPECT_EQ(endItr, &v[0] + v.size());
 }
 
 TEST(MyVectorIteratrTest, IncrementOperator)
 {
-    myvector::MyVector v;
+    myvector::MyVector<int> v;
     v.push_back(1);
     v.push_back(2);
     v.push_back(3);
@@ -40,7 +40,7 @@ TEST(MyVectorIteratrTest, IncrementOperator)
 
 TEST(MyVectorIteratrTest, TraverseAllElements)
 {
-    myvector::MyVector v;
+    myvector::MyVector<int> v;
     v.push_back(10);
     v.push_back(20);
     v.push_back(30);
@@ -67,21 +67,21 @@ TEST(MyVectorIteratrTest, TraverseAllElements)
 
 TEST(MyVectorIteratrTest, ConstBeginIterator)
 {
-    myvector::MyVector v(5, 123);
+    myvector::MyVector<int> v(5, 123);
     auto citr{ v.cbegin() };
     EXPECT_EQ(*citr, v[0]);
 }
 
 TEST(MyVectorIteratrTest, ConstEndIterator)
 {
-    myvector::MyVector v(5, 123);
+    myvector::MyVector<int> v(5, 123);
     auto cendItr{ v.cend() };
     EXPECT_EQ(cendItr, &v[0] + v.size());
 }
 
 TEST(MyVectorIteratrTest, ConstIncrementOperator)
 {
-    myvector::MyVector v;
+    myvector::MyVector<int> v;
     v.push_back(1);
     v.push_back(2);
     v.push_back(3);
@@ -103,7 +103,7 @@ TEST(MyVectorIteratrTest, ConstIncrementOperator)
 
 TEST(MyVectorIteratrTest, ConstTraverseAllElements)
 {
-    myvector::MyVector v;
+    myvector::MyVector<int> v;
     v.push_back(10);
     v.push_back(20);
     v.push_back(30);

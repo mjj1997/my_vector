@@ -4,7 +4,7 @@
 
 TEST(MyVectorTest, EmptyVector)
 {
-    myvector::MyVector v;
+    myvector::MyVector<int> v;
 
     EXPECT_TRUE(v.empty());
     EXPECT_EQ(v.size(), 0);
@@ -13,7 +13,7 @@ TEST(MyVectorTest, EmptyVector)
 
 TEST(MyVectorTest, PushBack)
 {
-    myvector::MyVector v;
+    myvector::MyVector<int> v;
     for (int i{ 0 }; i < 10; ++i) {
         v.push_back(i);
     }
@@ -24,7 +24,7 @@ TEST(MyVectorTest, PushBack)
 
 TEST(MyVectorTest, Clear)
 {
-    myvector::MyVector v;
+    myvector::MyVector<int> v;
     v.push_back(1);
     v.clear();
 
@@ -35,7 +35,7 @@ TEST(MyVectorTest, Clear)
 
 TEST(MyVectorTest, LargeCapacity)
 {
-    myvector::MyVector v;
+    myvector::MyVector<int> v;
 
     const int n{ 100000 };
     for (int i{ 0 }; i < n; ++i) {
@@ -53,7 +53,7 @@ TEST(MyVectorTest, LargeCapacity)
 TEST(MyVectorTest, NegativeN)
 {
     try {
-        myvector::MyVector v(-1, 0);
+        myvector::MyVector<int> v(-1, 0);
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;
     }
@@ -61,21 +61,21 @@ TEST(MyVectorTest, NegativeN)
 
 TEST(MyVectorTest, ReserveSmaller)
 {
-    myvector::MyVector v(10, 0);
+    myvector::MyVector<int> v(10, 0);
     v.reserve(5);
     EXPECT_EQ(v.capacity(), 10);
 }
 
 TEST(MyVectorTest, ManualReserve)
 {
-    myvector::MyVector v;
+    myvector::MyVector<int> v;
     v.reserve(20);
     EXPECT_EQ(v.capacity(), 20);
 }
 
 TEST(MyVectorTest, ZeroSizeConstructor)
 {
-    myvector::MyVector v(0, 0);
+    myvector::MyVector<int> v(0, 0);
     EXPECT_TRUE(v.empty());
     EXPECT_EQ(v.size(), 0);
     EXPECT_EQ(v.capacity(), 0);
@@ -83,7 +83,7 @@ TEST(MyVectorTest, ZeroSizeConstructor)
 
 TEST(MyVectorTest, AutoResizing)
 {
-    myvector::MyVector v;
+    myvector::MyVector<int> v;
     v.push_back(0);
 
     for (int i{ 0 }; i < 9; ++i) {
@@ -97,7 +97,7 @@ TEST(MyVectorTest, AutoResizing)
 
 TEST(MyVectorTest, ClearThenFill)
 {
-    myvector::MyVector v;
+    myvector::MyVector<int> v;
     v.push_back(1);
     v.clear();
     v.push_back(2);
@@ -109,8 +109,8 @@ TEST(MyVectorTest, ClearThenFill)
 
 TEST(MyVectorTest, CopyConstructor)
 {
-    myvector::MyVector originalVec(5, 10);
-    myvector::MyVector otherVec(originalVec);
+    myvector::MyVector<int> originalVec(5, 10);
+    myvector::MyVector<int> otherVec(originalVec);
 
     EXPECT_EQ(originalVec.size(), otherVec.size());
     EXPECT_EQ(originalVec.capacity(), otherVec.capacity());
@@ -125,8 +125,8 @@ TEST(MyVectorTest, CopyConstructor)
 
 TEST(MyVectorTest, CopyAssignment)
 {
-    myvector::MyVector v1(3, 1);
-    myvector::MyVector v2(5, 2);
+    myvector::MyVector<int> v1(3, 1);
+    myvector::MyVector<int> v2(5, 2);
     v1 = v2;
     EXPECT_EQ(v1.capacity(), 5);
 
@@ -142,7 +142,7 @@ TEST(MyVectorTest, CopyAssignment)
 
 TEST(MyVectorTest, SelfAssignment)
 {
-    myvector::MyVector v;
+    myvector::MyVector<int> v;
     v.push_back(1);
     v = v;
     EXPECT_EQ(v.size(), 1);
