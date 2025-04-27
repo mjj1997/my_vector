@@ -65,3 +65,65 @@ TEST(MyVectorIteratrTest, TraverseAllElements)
     EXPECT_EQ(count, v.size());
 }
 
+TEST(MyVectorIteratrTest, ConstBeginIterator)
+{
+    myvector::MyVector v(5, 123);
+    auto citr{ v.cbegin() };
+    EXPECT_EQ(*citr, v[0]);
+}
+
+TEST(MyVectorIteratrTest, ConstEndIterator)
+{
+    myvector::MyVector v(5, 123);
+    auto cendItr{ v.cend() };
+    EXPECT_EQ(cendItr, &v[0] + v.size());
+}
+
+TEST(MyVectorIteratrTest, ConstIncrementOperator)
+{
+    myvector::MyVector v;
+    v.push_back(1);
+    v.push_back(2);
+    v.push_back(3);
+    v.push_back(4);
+    v.push_back(5);
+    auto citr{ v.cbegin() };
+
+    ++citr;
+    EXPECT_EQ(*citr, v[1]);
+
+    ++citr;
+    EXPECT_EQ(*citr, v[2]);
+
+    while (citr != v.cend()) {
+        ++citr;
+    }
+    EXPECT_EQ(citr, v.cend());
+}
+
+TEST(MyVectorIteratrTest, ConstTraverseAllElements)
+{
+    myvector::MyVector v;
+    v.push_back(10);
+    v.push_back(20);
+    v.push_back(30);
+    v.push_back(40);
+    auto citr{ v.cbegin() };
+    int count{ 0 };
+
+    while (citr != v.cend()) {
+        if (count == 0)
+            EXPECT_EQ(*citr, 10);
+        else if (count == 1)
+            EXPECT_EQ(*citr, 20);
+        else if (count == 2)
+            EXPECT_EQ(*citr, 30);
+        else if (count == 3)
+            EXPECT_EQ(*citr, 40);
+
+        ++citr;
+        ++count;
+    }
+
+    EXPECT_EQ(count, v.size());
+}
