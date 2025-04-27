@@ -137,4 +137,10 @@ bool MyVector::iterator::operator!=(const iterator& other) const
     return m_ptr != other.m_ptr;
 }
 
+MyVector::iterator& MyVector::iterator::operator++()
+{
+    ++m_ptr;
+    return *this;
+}
+
 } // namespace myvector

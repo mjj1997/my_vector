@@ -33,6 +33,7 @@ public:
         iterator(int* ptr);
 
         int& operator*();
+        iterator& operator++();
 
         bool operator==(const iterator& other) const;
         bool operator!=(const iterator& other) const;
