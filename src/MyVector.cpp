@@ -122,4 +122,19 @@ int& MyVector::iterator::operator*()
     return *m_ptr;
 }
 
+MyVector::iterator MyVector::end() noexcept
+{
+    return MyVector::iterator{ m_data + m_size };
+}
+
+bool MyVector::iterator::operator==(const iterator& other) const
+{
+    return m_ptr == other.m_ptr;
+}
+
+bool MyVector::iterator::operator!=(const iterator& other) const
+{
+    return m_ptr != other.m_ptr;
+}
+
 } // namespace myvector

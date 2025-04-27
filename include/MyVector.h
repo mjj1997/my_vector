@@ -34,6 +34,9 @@ public:
 
         int& operator*();
 
+        bool operator==(const iterator& other) const;
+        bool operator!=(const iterator& other) const;
+
     private:
         friend class MyVector;
 
@@ -41,6 +44,7 @@ public:
     };
 
     iterator begin() noexcept;
+    iterator end() noexcept;
 private:
     int* m_data{ nullptr };
     size_t m_size{ 0 };
