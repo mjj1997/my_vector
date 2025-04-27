@@ -2,6 +2,7 @@ find_package(GTest CONFIG REQUIRED)
 
 set(TEST_SRCS
     test.cpp
+    test_iterator.cpp
 )
 
 add_executable(MyVectorUnitTest

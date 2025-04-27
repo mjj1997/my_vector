@@ -27,6 +27,20 @@ public:
     void push_back(int value);
     void clear();
 
+    class iterator
+    {
+    public:
+        iterator(int* ptr);
+
+        int& operator*();
+
+    private:
+        friend class MyVector;
+
+        int* m_ptr{ nullptr };
+    };
+
+    iterator begin() noexcept;
 private:
     int* m_data{ nullptr };
     size_t m_size{ 0 };

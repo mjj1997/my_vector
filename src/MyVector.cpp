@@ -108,4 +108,18 @@ void MyVector::reserve(size_t newCapacity)
     m_capacity = newCapacity;
 }
 
+MyVector::iterator::iterator(int* ptr)
+    : m_ptr{ ptr }
+{}
+
+MyVector::iterator MyVector::begin() noexcept
+{
+    return MyVector::iterator{ m_data };
+}
+
+int& MyVector::iterator::operator*()
+{
+    return *m_ptr;
+}
+
 } // namespace myvector
