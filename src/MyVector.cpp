@@ -108,4 +108,74 @@ void MyVector::reserve(size_t newCapacity)
     m_capacity = newCapacity;
 }
 
+MyVector::iterator::iterator(int* ptr)
+    : m_ptr{ ptr }
+{}
+
+MyVector::iterator MyVector::begin() noexcept
+{
+    return MyVector::iterator{ m_data };
+}
+
+int& MyVector::iterator::operator*()
+{
+    return *m_ptr;
+}
+
+MyVector::iterator MyVector::end() noexcept
+{
+    return MyVector::iterator{ m_data + m_size };
+}
+
+bool MyVector::iterator::operator==(const iterator& rhs) const
+{
+    return m_ptr == rhs.m_ptr;
+}
+
+bool MyVector::iterator::operator!=(const iterator& rhs) const
+{
+    return m_ptr != rhs.m_ptr;
+}
+
+MyVector::iterator& MyVector::iterator::operator++()
+{
+    ++m_ptr;
+    return *this;
+}
+
+MyVector::const_iterator::const_iterator(int* ptr)
+    : m_ptr{ ptr }
+{}
+
+MyVector::const_iterator MyVector::cbegin() const noexcept
+{
+    return MyVector::const_iterator{ m_data };
+}
+
+const int& MyVector::const_iterator::operator*() const
+{
+    return *m_ptr;
+}
+
+MyVector::const_iterator MyVector::cend() const noexcept
+{
+    return MyVector::const_iterator{ m_data + m_size };
+}
+
+bool MyVector::const_iterator::operator==(const const_iterator& rhs) const
+{
+    return m_ptr == rhs.m_ptr;
+}
+
+bool MyVector::const_iterator::operator!=(const const_iterator& rhs) const
+{
+    return m_ptr != rhs.m_ptr;
+}
+
+MyVector::const_iterator& MyVector::const_iterator::operator++()
+{
+    ++m_ptr;
+    return *this;
+}
+
 } // namespace myvector
