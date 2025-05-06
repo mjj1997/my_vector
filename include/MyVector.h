@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <cstddef>
+#include <initializer_list>
 #include <stdexcept>
 
 namespace myvector {
@@ -12,6 +13,7 @@ class MyVector
 public:
     MyVector() {}
     MyVector(int n, const T& value);
+    MyVector(std::initializer_list<T> valueArray);
 
     ~MyVector() { delete[] m_data; }
 
@@ -59,6 +61,14 @@ MyVector<T>::MyVector(int n, const T& value)
     }
 
     m_size = n;
+}
+
+template<typename T>
+MyVector<T>::MyVector(std::initializer_list<T> valueArray)
+{
+    for (const auto& item : valueArray) {
+        push_back(item);
+    }
 }
 
 template<typename T>
